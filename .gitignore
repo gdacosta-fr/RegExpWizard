@@ -6,9 +6,17 @@ __pycache__
 /tmp
 
 # local
-/residus
+
+**/residus*
+# exclusion des fichiers et répertoires dont le nom se termine par "prive" ou "private"
+# n'importe où dans l'arborescence.
+**/*prive
+**/*private
+
 genmo.sh
+genpo.sh
 *.desktop
+*backup
 tmp*
 # Only final translation dictionaries
 *.mo

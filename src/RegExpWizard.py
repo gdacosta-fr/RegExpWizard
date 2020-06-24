@@ -2,24 +2,18 @@
 # coding: utf-8
 
 
-from const import _, GETTEXT_DOMAIN, REW_LOCALE_PATH
-import locale
-import gettext
-# On Windows, "locale" does not export "bindtextdomain"
-locale.bindtextdomain(GETTEXT_DOMAIN, REW_LOCALE_PATH)  # For Gtk. See https://stackoverflow.com/a/10540744
-gettext.bindtextdomain(GETTEXT_DOMAIN, REW_LOCALE_PATH)
-gettext.textdomain(GETTEXT_DOMAIN)
 
 import gi
 gi.require_version( 'Gtk', '3.0' )
 
 from gi.repository import Gtk
 import re
-from InterfaceGtk import Environment
+from InterfaceGtk import GtkInterface
 from WidgetNode import WidgetNode
 from RegExpStack import RegExpStack
 from RegularExpressionElement import RegularExpressionElement
 import version
+from GrampsOrNotGramps import _, RunningUnderGramps
 
 
 #
@@ -31,33 +25,34 @@ import version
 # The reference is the French translation.
 #
 
-class RegExpWizard(Environment):
+class RegExpWizard(GtkInterface):
     def __init__(self):
-        Environment.__init__(self)
+        GtkInterface.__init__(self)
 
-        Environment._GtkInterface.add_from_file('RegExpWizard.glade')
+        GtkInterface.top.add_from_file(self.package_path + "RegExpWizard.glade")
 
         self._Strings = []      # list of "OR" strings
         self.__BuildWidgetsTree()
 
-        Environment._GtkInterface.connect_signals(self)
+        GtkInterface.top.connect_signals(self)
 
-        window = Environment._GtkInterface.get_object('RegExpWizardMainWindow')
+        window = GtkInterface.top.get_object('main')
         window.connect( 'destroy', Gtk.main_quit )
 
         # Version identification
-        window.set_title(window.get_title() + " (" + version.VERSION + ")")
+        # TODO on récupère la version de Gramps, vs la version du greffon
+#GdC#        window.set_title(window.get_title() + " (" + version.VERSION + ")")
 
         window.show_all()
 
-        self.RegExpStack = RegExpStack(widget=Environment._GtkInterface.get_object("TxtRegExpClearText"))
+        self.RegExpStack = RegExpStack(widget=GtkInterface.top.get_object("TxtRegExpClearText"))
 
-        self.TxtRegExp = Environment._GtkInterface.get_object("TxtRegExp")
+        self.TxtRegExp = GtkInterface.top.get_object("TxtRegExp")
 
         # secondary widgets
-        self.TxtTestString = Environment._GtkInterface.get_object("TxtTestString")
-        self.CheckCase = Environment._GtkInterface.get_object("CheckCase")
-        self.LblTestResult = Environment._GtkInterface.get_object("LblTestResult")
+        self.TxtTestString = GtkInterface.top.get_object("TxtTestString")
+        self.CheckCase = GtkInterface.top.get_object("CheckCase")
+        self.LblTestResult = GtkInterface.top.get_object("LblTestResult")
 
 
     def __BuildWidgetsTree(self):
@@ -143,7 +138,7 @@ class RegExpWizard(Environment):
 
 
 
-    def on_RegExpWizardMainWindow_close(self, widget):
+    def on_main_close(self, widget):
         Gtk.main_quit()
 
     def on_BtnOr_clicked(self, widget):
@@ -206,7 +201,7 @@ class RegExpWizard(Environment):
                         except_char="^"
                     else:
                         except_char=""
-                    string = Environment._GtkInterface.get_object("TxtChar").get_text()
+                    string = GtkInterface.top.get_object("TxtChar").get_text()
                     re = RegularExpressionElement(preamble="[" + except_char, strings=[string], postamble="]", min=min, max=max)
         elif self.RadioElemEnd.IsSensitiveAndActive():
             re = RegularExpressionElement( postamble="$")
@@ -238,7 +233,7 @@ class RegExpWizard(Environment):
 
     def __ClearResults(self):
         for w in ("TxtRegExpClearText",  "TxtRegExp"):
-            Environment._GtkInterface.get_object(w).set_text("")
+            GtkInterface.top.get_object(w).set_text("")
         self.RegExpStack.Clear()
 
     def on_BtlClearAll_clicked(self,  widget):

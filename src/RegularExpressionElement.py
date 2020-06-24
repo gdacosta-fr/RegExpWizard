@@ -1,11 +1,7 @@
 #!/usr/bin/env python3
 # coding: utf-8
 
-import string
-import re
-from WidgetNode import WidgetNode
-from RegExpStack import RegExpStack
-from const import _
+from GrampsOrNotGramps import _
 
 #
 # Expressions rationelles = Regular Expressions = RegExp = Regex = RE

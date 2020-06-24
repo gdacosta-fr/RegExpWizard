@@ -7,8 +7,8 @@
 # Identificateurs de version pompés sur Gramps
 #
 
-VERSION_TUPLE = (1, 0, 0)
-VERSION_QUALIFIER = ""
+VERSION_TUPLE = (0, 0, 1)
+VERSION_QUALIFIER = "-beta"
 VERSION = '.'.join(map(str,VERSION_TUPLE)) + VERSION_QUALIFIER
 major_version = "%s.%s" % (VERSION_TUPLE[0], VERSION_TUPLE[1])
 

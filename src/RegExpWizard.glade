@@ -1,560 +1,551 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.20.0 -->
+<!-- Generated with glade 3.22.1 -->
 <interface>
   <requires lib="gtk+" version="3.2"/>
-  <object class="GtkWindow" id="RegExpWizardMainWindow">
-    <property name="width_request">800</property>
-    <property name="height_request">600</property>
+  <object class="GtkFixed" id="main">
+    <property name="visible">True</property>
     <property name="can_focus">False</property>
-    <property name="title" translatable="yes">Regular Expressions Wizard</property>
-    <property name="default_width">640</property>
-    <property name="default_height">480</property>
+    <signal name="destroy" handler="on_main_destroy" swapped="no"/>
     <child>
-      <object class="GtkFixed">
+      <object class="GtkButton" id="BtnAdd">
+        <property name="label" translatable="yes">--&gt;</property>
+        <property name="width_request">80</property>
+        <property name="height_request">35</property>
+        <property name="visible">True</property>
+        <property name="can_focus">True</property>
+        <property name="receives_default">True</property>
+        <property name="tooltip_text" translatable="yes">Accept the element of the current regular expression, and add it after the regular expression being built.</property>
+        <signal name="clicked" handler="on_BtnAdd_clicked" swapped="no"/>
+      </object>
+      <packing>
+        <property name="x">384</property>
+        <property name="y">10</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkButton" id="BtlClearAll">
+        <property name="label" translatable="yes">Clear</property>
+        <property name="width_request">80</property>
+        <property name="height_request">35</property>
+        <property name="visible">True</property>
+        <property name="can_focus">True</property>
+        <property name="receives_default">True</property>
+        <property name="tooltip_text" translatable="yes">Click to make a new regular expression</property>
+        <signal name="clicked" handler="on_BtlClearAll_clicked" swapped="no"/>
+      </object>
+      <packing>
+        <property name="x">384</property>
+        <property name="y">60</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkFrame">
+        <property name="width_request">318</property>
+        <property name="height_request">469</property>
         <property name="visible">True</property>
         <property name="can_focus">False</property>
+        <property name="label_xalign">0</property>
+        <property name="shadow_type">in</property>
         <child>
-          <object class="GtkButton" id="BtnAdd">
-            <property name="label" translatable="yes">--&gt;</property>
-            <property name="width_request">80</property>
-            <property name="height_request">35</property>
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-            <property name="tooltip_text" translatable="yes">Accept the element of the current regular expression, and add it after the regular expression being built.</property>
-            <signal name="clicked" handler="on_BtnAdd_clicked" swapped="no"/>
-          </object>
-          <packing>
-            <property name="x">384</property>
-            <property name="y">10</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkButton" id="BtlClearAll">
-            <property name="label" translatable="yes">Clear</property>
-            <property name="width_request">80</property>
-            <property name="height_request">35</property>
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-            <property name="tooltip_text" translatable="yes">Click to make a new regular expression</property>
-            <signal name="clicked" handler="on_BtlClearAll_clicked" swapped="no"/>
-          </object>
-          <packing>
-            <property name="x">384</property>
-            <property name="y">60</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkFrame">
-            <property name="width_request">318</property>
-            <property name="height_request">469</property>
+          <object class="GtkAlignment">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="label_xalign">0</property>
-            <property name="shadow_type">in</property>
+            <property name="left_padding">12</property>
             <child>
-              <object class="GtkAlignment">
+              <object class="GtkLabel" id="TxtRegExpClearText">
+                <property name="width_request">40</property>
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="left_padding">12</property>
-                <child>
-                  <object class="GtkLabel" id="TxtRegExpClearText">
-                    <property name="width_request">40</property>
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="tooltip_text" translatable="yes">Description, "in clear text", of the regular expression</property>
-                    <property name="wrap">True</property>
-                    <property name="selectable">True</property>
-                    <property name="track_visited_links">False</property>
-                    <property name="xalign">0</property>
-                    <property name="yalign">0</property>
-                  </object>
-                </child>
+                <property name="tooltip_text" translatable="yes">Description, "in clear text", of the regular expression</property>
+                <property name="wrap">True</property>
+                <property name="selectable">True</property>
+                <property name="track_visited_links">False</property>
+                <property name="xalign">0</property>
+                <property name="yalign">0</property>
               </object>
             </child>
-            <child type="label_item">
-              <placeholder/>
-            </child>
           </object>
-          <packing>
-            <property name="x">472</property>
-            <property name="y">10</property>
-          </packing>
         </child>
-        <child>
-          <object class="GtkLabel">
-            <property name="width_request">185</property>
-            <property name="height_request">20</property>
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="label" translatable="yes">Regular Expression:</property>
-            <property name="xalign">1</property>
-          </object>
-          <packing>
-            <property name="x">10</property>
-            <property name="y">494</property>
-          </packing>
+        <child type="label_item">
+          <placeholder/>
         </child>
-        <child>
-          <object class="GtkEntry" id="TxtRegExp">
-            <property name="width_request">591</property>
-            <property name="height_request">20</property>
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="tooltip_text" translatable="yes">Result corresponding to the created regular expression.
+      </object>
+      <packing>
+        <property name="x">472</property>
+        <property name="y">10</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkLabel">
+        <property name="width_request">185</property>
+        <property name="height_request">20</property>
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="label" translatable="yes">Regular Expression:</property>
+        <property name="xalign">1</property>
+      </object>
+      <packing>
+        <property name="x">10</property>
+        <property name="y">494</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkEntry" id="TxtRegExp">
+        <property name="width_request">591</property>
+        <property name="height_request">20</property>
+        <property name="visible">True</property>
+        <property name="can_focus">True</property>
+        <property name="tooltip_text" translatable="yes">Result corresponding to the created regular expression.
 A copy and paste in Gramps fields accepting this type of expressions.
 Do not forget to check the box "Use regular expressions"</property>
-            <signal name="changed" handler="on_TxtRegExp_changed" swapped="no"/>
-          </object>
-          <packing>
-            <property name="x">200</property>
-            <property name="y">487</property>
-          </packing>
-        </child>
+        <signal name="changed" handler="on_TxtRegExp_changed" swapped="no"/>
+      </object>
+      <packing>
+        <property name="x">200</property>
+        <property name="y">487</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkFrame" id="FrameReBuilding">
+        <property name="width_request">364</property>
+        <property name="height_request">469</property>
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="label_xalign">0</property>
+        <property name="shadow_type">in</property>
         <child>
-          <object class="GtkFrame" id="FrameReBuilding">
-            <property name="width_request">364</property>
-            <property name="height_request">469</property>
+          <object class="GtkAlignment">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="label_xalign">0</property>
-            <property name="shadow_type">in</property>
+            <property name="left_padding">12</property>
             <child>
-              <object class="GtkAlignment">
+              <object class="GtkFixed">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="left_padding">12</property>
                 <child>
-                  <object class="GtkFixed">
+                  <object class="GtkRadioButton" id="RadioElemBeginning">
+                    <property name="label" translatable="yes">Start of string</property>
+                    <property name="width_request">133</property>
+                    <property name="height_request">20</property>
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <child>
-                      <object class="GtkRadioButton" id="RadioElemBeginning">
-                        <property name="label" translatable="yes">Start of string</property>
-                        <property name="width_request">133</property>
-                        <property name="height_request">20</property>
-                        <property name="visible">True</property>
-                        <property name="can_focus">True</property>
-                        <property name="receives_default">False</property>
-                        <property name="tooltip_text" translatable="yes">The following description is found at the beginning of the string.
+                    <property name="can_focus">True</property>
+                    <property name="receives_default">False</property>
+                    <property name="tooltip_text" translatable="yes">The following description is found at the beginning of the string.
 In the general case, the regexp is searched anywhere in the string.
 By example by searching for "Start of string" + string "Louis" this allows to find "Louis", "Louis Marie",... but to ignore "Jean-Louis".</property>
-                        <property name="draw_indicator">True</property>
-                        <property name="group">RadioElementNbOccurrences</property>
-                      </object>
-                    </child>
+                    <property name="draw_indicator">True</property>
+                    <property name="group">RadioElementNbOccurrences</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkRadioButton" id="RadioElementNbOccurrences">
+                    <property name="label" translatable="yes">Number of occurrences</property>
+                    <property name="width_request">180</property>
+                    <property name="height_request">20</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="receives_default">False</property>
+                    <property name="active">True</property>
+                    <property name="draw_indicator">True</property>
+                    <signal name="toggled" handler="RadioButtonChanged" swapped="no"/>
+                  </object>
+                  <packing>
+                    <property name="y">25</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkRadioButton" id="RadioNbOccurrences0or1">
+                    <property name="label" translatable="yes">Zero or one</property>
+                    <property name="height_request">20</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="receives_default">False</property>
+                    <property name="tooltip_text" translatable="yes">The element is optional.</property>
+                    <property name="active">True</property>
+                    <property name="draw_indicator">True</property>
+                    <property name="group">RadioNbOccurrences1</property>
+                  </object>
+                  <packing>
+                    <property name="x">40</property>
+                    <property name="y">50</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkRadioButton" id="RadioNbOccurrences1">
+                    <property name="label" translatable="yes">One, exactly</property>
+                    <property name="height_request">20</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="has_default">True</property>
+                    <property name="receives_default">False</property>
+                    <property name="active">True</property>
+                    <property name="draw_indicator">True</property>
+                  </object>
+                  <packing>
+                    <property name="x">40</property>
+                    <property name="y">75</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkRadioButton" id="RadioNbOccurrences1orMore">
+                    <property name="label" translatable="yes">At least one</property>
+                    <property name="height_request">20</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="receives_default">False</property>
+                    <property name="tooltip_text" translatable="yes">The element is present at least once.</property>
+                    <property name="active">True</property>
+                    <property name="draw_indicator">True</property>
+                    <property name="group">RadioNbOccurrences1</property>
+                  </object>
+                  <packing>
+                    <property name="x">40</property>
+                    <property name="y">100</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkRadioButton" id="RadioNbOccurrencesAny">
+                    <property name="label" translatable="yes">Any, including zero</property>
+                    <property name="height_request">20</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="receives_default">False</property>
+                    <property name="tooltip_text" translatable="yes">The element is present any number of times, including none.</property>
+                    <property name="active">True</property>
+                    <property name="draw_indicator">True</property>
+                    <property name="group">RadioNbOccurrences1</property>
+                    <signal name="toggled" handler="RadioButtonChanged" swapped="no"/>
+                  </object>
+                  <packing>
+                    <property name="x">40</property>
+                    <property name="y">125</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkFrame" id="FrameOccurencesOf">
+                    <property name="width_request">300</property>
+                    <property name="height_request">270</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="label_xalign">0</property>
+                    <property name="shadow_type">in</property>
                     <child>
-                      <object class="GtkRadioButton" id="RadioElementNbOccurrences">
-                        <property name="label" translatable="yes">Number of occurrences</property>
-                        <property name="width_request">180</property>
-                        <property name="height_request">20</property>
-                        <property name="visible">True</property>
-                        <property name="can_focus">True</property>
-                        <property name="receives_default">False</property>
-                        <property name="active">True</property>
-                        <property name="draw_indicator">True</property>
-                        <signal name="toggled" handler="RadioButtonChanged" swapped="no"/>
-                      </object>
-                      <packing>
-                        <property name="y">25</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkRadioButton" id="RadioNbOccurrences0or1">
-                        <property name="label" translatable="yes">Zero or one</property>
-                        <property name="height_request">20</property>
-                        <property name="visible">True</property>
-                        <property name="can_focus">True</property>
-                        <property name="receives_default">False</property>
-                        <property name="tooltip_text" translatable="yes">The element is optional.</property>
-                        <property name="active">True</property>
-                        <property name="draw_indicator">True</property>
-                        <property name="group">RadioNbOccurrences1</property>
-                      </object>
-                      <packing>
-                        <property name="x">40</property>
-                        <property name="y">50</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkRadioButton" id="RadioNbOccurrences1">
-                        <property name="label" translatable="yes">One, exactly</property>
-                        <property name="height_request">20</property>
-                        <property name="visible">True</property>
-                        <property name="can_focus">True</property>
-                        <property name="has_default">True</property>
-                        <property name="receives_default">False</property>
-                        <property name="active">True</property>
-                        <property name="draw_indicator">True</property>
-                      </object>
-                      <packing>
-                        <property name="x">40</property>
-                        <property name="y">75</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkRadioButton" id="RadioNbOccurrences1orMore">
-                        <property name="label" translatable="yes">At least one</property>
-                        <property name="height_request">20</property>
-                        <property name="visible">True</property>
-                        <property name="can_focus">True</property>
-                        <property name="receives_default">False</property>
-                        <property name="tooltip_text" translatable="yes">The element is present at least once.</property>
-                        <property name="active">True</property>
-                        <property name="draw_indicator">True</property>
-                        <property name="group">RadioNbOccurrences1</property>
-                      </object>
-                      <packing>
-                        <property name="x">40</property>
-                        <property name="y">100</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkRadioButton" id="RadioNbOccurrencesAny">
-                        <property name="label" translatable="yes">Any, including zero</property>
-                        <property name="height_request">20</property>
-                        <property name="visible">True</property>
-                        <property name="can_focus">True</property>
-                        <property name="receives_default">False</property>
-                        <property name="tooltip_text" translatable="yes">The element is present any number of times, including none.</property>
-                        <property name="active">True</property>
-                        <property name="draw_indicator">True</property>
-                        <property name="group">RadioNbOccurrences1</property>
-                        <signal name="toggled" handler="RadioButtonChanged" swapped="no"/>
-                      </object>
-                      <packing>
-                        <property name="x">40</property>
-                        <property name="y">125</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkFrame" id="FrameOccurencesOf">
-                        <property name="width_request">300</property>
-                        <property name="height_request">270</property>
+                      <object class="GtkAlignment">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="label_xalign">0</property>
-                        <property name="shadow_type">in</property>
+                        <property name="left_padding">12</property>
                         <child>
-                          <object class="GtkAlignment">
+                          <object class="GtkFixed">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
-                            <property name="left_padding">12</property>
                             <child>
-                              <object class="GtkFixed">
+                              <object class="GtkRadioButton" id="RadioElemString">
+                                <property name="label" translatable="yes">String of characters</property>
+                                <property name="height_request">20</property>
+                                <property name="visible">True</property>
+                                <property name="can_focus">True</property>
+                                <property name="receives_default">False</property>
+                                <property name="tooltip_text" translatable="yes">The string of characters entered is searched as is.</property>
+                                <property name="active">True</property>
+                                <property name="draw_indicator">True</property>
+                                <signal name="toggled" handler="RadioButtonChanged" swapped="no"/>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkEntry" id="TxtElementaryString">
+                                <property name="width_request">168</property>
+                                <property name="height_request">35</property>
+                                <property name="visible">True</property>
+                                <property name="can_focus">True</property>
+                                <property name="placeholder_text" translatable="yes">Text to search</property>
+                              </object>
+                              <packing>
+                                <property name="y">25</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkButton" id="BtnOr">
+                                <property name="label" translatable="yes">Or</property>
+                                <property name="width_request">80</property>
+                                <property name="height_request">35</property>
+                                <property name="visible">True</property>
+                                <property name="can_focus">True</property>
+                                <property name="receives_default">True</property>
+                                <property name="tooltip_text" translatable="yes">You can specify multiple channel options to search.</property>
+                                <signal name="clicked" handler="on_BtnOr_clicked" swapped="no"/>
+                              </object>
+                              <packing>
+                                <property name="x">190</property>
+                                <property name="y">25</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkRadioButton" id="RadioElemOneChar">
+                                <property name="label" translatable="yes">One character </property>
+                                <property name="height_request">20</property>
+                                <property name="visible">True</property>
+                                <property name="can_focus">True</property>
+                                <property name="receives_default">False</property>
+                                <property name="draw_indicator">True</property>
+                                <property name="group">RadioElemString</property>
+                                <signal name="toggled" handler="RadioButtonChanged" swapped="no"/>
+                              </object>
+                              <packing>
+                                <property name="y">125</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkRadioButton" id="RadioElemOneCharAny">
+                                <property name="label" translatable="yes">ordinary</property>
+                                <property name="height_request">20</property>
+                                <property name="visible">True</property>
+                                <property name="sensitive">False</property>
+                                <property name="can_focus">True</property>
+                                <property name="receives_default">False</property>
+                                <property name="tooltip_text" translatable="yes">Any character: alphabetic, including diacritical characters, numeric, punctuation, space,...</property>
+                                <property name="active">True</property>
+                                <property name="draw_indicator">True</property>
+                              </object>
+                              <packing>
+                                <property name="x">40</property>
+                                <property name="y">150</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkRadioButton" id="RadioElemOneCharAmong">
+                                <property name="label" translatable="yes">among</property>
+                                <property name="height_request">20</property>
+                                <property name="visible">True</property>
+                                <property name="sensitive">False</property>
+                                <property name="can_focus">True</property>
+                                <property name="receives_default">False</property>
+                                <property name="tooltip_text" translatable="yes">List the characters, without any spaces nor commas.
+E.g.: eéêèë</property>
+                                <property name="active">True</property>
+                                <property name="draw_indicator">True</property>
+                              </object>
+                              <packing>
+                                <property name="x">80</property>
+                                <property name="y">200</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkRadioButton" id="RadioElemOneCharExcept">
+                                <property name="label" translatable="yes">except</property>
+                                <property name="height_request">20</property>
+                                <property name="visible">True</property>
+                                <property name="sensitive">False</property>
+                                <property name="can_focus">True</property>
+                                <property name="receives_default">False</property>
+                                <property name="tooltip_text" translatable="yes">Any character, EXCEPT those mentioned here</property>
+                                <property name="draw_indicator">True</property>
+                                <property name="group">RadioElemOneCharAmong</property>
+                              </object>
+                              <packing>
+                                <property name="x">80</property>
+                                <property name="y">225</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkEntry" id="TxtChar">
+                                <property name="width_request">83</property>
+                                <property name="height_request">45</property>
+                                <property name="visible">True</property>
+                                <property name="sensitive">False</property>
+                                <property name="can_focus">True</property>
+                                <property name="width_chars">2</property>
+                              </object>
+                              <packing>
+                                <property name="x">190</property>
+                                <property name="y">200</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkRadioButton" id="RadioElemOneCharInSet">
+                                <property name="label" translatable="yes">in a set</property>
+                                <property name="height_request">20</property>
+                                <property name="visible">True</property>
+                                <property name="sensitive">False</property>
+                                <property name="can_focus">True</property>
+                                <property name="receives_default">False</property>
+                                <property name="draw_indicator">True</property>
+                                <property name="group">RadioElemOneCharAny</property>
+                                <signal name="toggled" handler="RadioButtonChanged" swapped="no"/>
+                              </object>
+                              <packing>
+                                <property name="x">40</property>
+                                <property name="y">175</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkFrame">
+                                <property name="width_request">271</property>
+                                <property name="height_request">47</property>
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
+                                <property name="label_xalign">0</property>
+                                <property name="shadow_type">in</property>
                                 <child>
-                                  <object class="GtkRadioButton" id="RadioElemString">
-                                    <property name="label" translatable="yes">String of characters</property>
-                                    <property name="height_request">20</property>
-                                    <property name="visible">True</property>
-                                    <property name="can_focus">True</property>
-                                    <property name="receives_default">False</property>
-                                    <property name="tooltip_text" translatable="yes">The string of characters entered is searched as is.</property>
-                                    <property name="active">True</property>
-                                    <property name="draw_indicator">True</property>
-                                    <signal name="toggled" handler="RadioButtonChanged" swapped="no"/>
-                                  </object>
-                                </child>
-                                <child>
-                                  <object class="GtkEntry" id="TxtElementaryString">
-                                    <property name="width_request">168</property>
-                                    <property name="height_request">35</property>
-                                    <property name="visible">True</property>
-                                    <property name="can_focus">True</property>
-                                    <property name="placeholder_text" translatable="yes">Text to search</property>
-                                  </object>
-                                  <packing>
-                                    <property name="y">25</property>
-                                  </packing>
-                                </child>
-                                <child>
-                                  <object class="GtkButton" id="BtnOr">
-                                    <property name="label" translatable="yes">Or</property>
-                                    <property name="width_request">80</property>
-                                    <property name="height_request">35</property>
-                                    <property name="visible">True</property>
-                                    <property name="can_focus">True</property>
-                                    <property name="receives_default">True</property>
-                                    <property name="tooltip_text" translatable="yes">You can specify multiple channel options to search.</property>
-                                    <signal name="clicked" handler="on_BtnOr_clicked" swapped="no"/>
-                                  </object>
-                                  <packing>
-                                    <property name="x">190</property>
-                                    <property name="y">25</property>
-                                  </packing>
-                                </child>
-                                <child>
-                                  <object class="GtkRadioButton" id="RadioElemOneChar">
-                                    <property name="label" translatable="yes">One character </property>
-                                    <property name="height_request">20</property>
-                                    <property name="visible">True</property>
-                                    <property name="can_focus">True</property>
-                                    <property name="receives_default">False</property>
-                                    <property name="draw_indicator">True</property>
-                                    <property name="group">RadioElemString</property>
-                                    <signal name="toggled" handler="RadioButtonChanged" swapped="no"/>
-                                  </object>
-                                  <packing>
-                                    <property name="y">125</property>
-                                  </packing>
-                                </child>
-                                <child>
-                                  <object class="GtkRadioButton" id="RadioElemOneCharAny">
-                                    <property name="label" translatable="yes">ordinary</property>
-                                    <property name="height_request">20</property>
-                                    <property name="visible">True</property>
-                                    <property name="sensitive">False</property>
-                                    <property name="can_focus">True</property>
-                                    <property name="receives_default">False</property>
-                                    <property name="tooltip_text" translatable="yes">Any character: alphabetic, including diacritical characters, numeric, punctuation, space,...</property>
-                                    <property name="active">True</property>
-                                    <property name="draw_indicator">True</property>
-                                  </object>
-                                  <packing>
-                                    <property name="x">40</property>
-                                    <property name="y">150</property>
-                                  </packing>
-                                </child>
-                                <child>
-                                  <object class="GtkRadioButton" id="RadioElemOneCharAmong">
-                                    <property name="label" translatable="yes">among</property>
-                                    <property name="height_request">20</property>
-                                    <property name="visible">True</property>
-                                    <property name="sensitive">False</property>
-                                    <property name="can_focus">True</property>
-                                    <property name="receives_default">False</property>
-                                    <property name="tooltip_text" translatable="yes">List the characters, without any spaces nor commas.
-E.g.: eéêèë</property>
-                                    <property name="active">True</property>
-                                    <property name="draw_indicator">True</property>
-                                  </object>
-                                  <packing>
-                                    <property name="x">80</property>
-                                    <property name="y">200</property>
-                                  </packing>
-                                </child>
-                                <child>
-                                  <object class="GtkRadioButton" id="RadioElemOneCharExcept">
-                                    <property name="label" translatable="yes">except</property>
-                                    <property name="height_request">20</property>
-                                    <property name="visible">True</property>
-                                    <property name="sensitive">False</property>
-                                    <property name="can_focus">True</property>
-                                    <property name="receives_default">False</property>
-                                    <property name="tooltip_text" translatable="yes">Any character, EXCEPT those mentioned here</property>
-                                    <property name="draw_indicator">True</property>
-                                    <property name="group">RadioElemOneCharAmong</property>
-                                  </object>
-                                  <packing>
-                                    <property name="x">80</property>
-                                    <property name="y">225</property>
-                                  </packing>
-                                </child>
-                                <child>
-                                  <object class="GtkEntry" id="TxtChar">
-                                    <property name="width_request">83</property>
-                                    <property name="height_request">45</property>
-                                    <property name="visible">True</property>
-                                    <property name="sensitive">False</property>
-                                    <property name="can_focus">True</property>
-                                    <property name="width_chars">2</property>
-                                  </object>
-                                  <packing>
-                                    <property name="x">190</property>
-                                    <property name="y">200</property>
-                                  </packing>
-                                </child>
-                                <child>
-                                  <object class="GtkRadioButton" id="RadioElemOneCharInSet">
-                                    <property name="label" translatable="yes">in a set</property>
-                                    <property name="height_request">20</property>
-                                    <property name="visible">True</property>
-                                    <property name="sensitive">False</property>
-                                    <property name="can_focus">True</property>
-                                    <property name="receives_default">False</property>
-                                    <property name="draw_indicator">True</property>
-                                    <property name="group">RadioElemOneCharAny</property>
-                                    <signal name="toggled" handler="RadioButtonChanged" swapped="no"/>
-                                  </object>
-                                  <packing>
-                                    <property name="x">40</property>
-                                    <property name="y">175</property>
-                                  </packing>
-                                </child>
-                                <child>
-                                  <object class="GtkFrame">
-                                    <property name="width_request">271</property>
-                                    <property name="height_request">47</property>
+                                  <object class="GtkAlignment">
                                     <property name="visible">True</property>
                                     <property name="can_focus">False</property>
-                                    <property name="label_xalign">0</property>
-                                    <property name="shadow_type">in</property>
+                                    <property name="left_padding">12</property>
                                     <child>
-                                      <object class="GtkAlignment">
+                                      <object class="GtkFixed">
                                         <property name="visible">True</property>
                                         <property name="can_focus">False</property>
-                                        <property name="left_padding">12</property>
                                         <child>
-                                          <object class="GtkFixed">
+                                          <object class="GtkLabel" id="TxtStrings">
+                                            <property name="width_request">-1</property>
+                                            <property name="height_request">-1</property>
                                             <property name="visible">True</property>
                                             <property name="can_focus">False</property>
-                                            <child>
-                                              <object class="GtkLabel" id="TxtStrings">
-                                                <property name="width_request">-1</property>
-                                                <property name="height_request">-1</property>
-                                                <property name="visible">True</property>
-                                                <property name="can_focus">False</property>
-                                                <property name="justify">fill</property>
-                                                <property name="wrap">True</property>
-                                                <property name="xalign">0</property>
-                                                <property name="yalign">0</property>
-                                              </object>
-                                            </child>
+                                            <property name="justify">fill</property>
+                                            <property name="wrap">True</property>
+                                            <property name="xalign">0</property>
+                                            <property name="yalign">0</property>
                                           </object>
                                         </child>
                                       </object>
                                     </child>
-                                    <child type="label_item">
-                                      <placeholder/>
-                                    </child>
                                   </object>
-                                  <packing>
-                                    <property name="y">71</property>
-                                  </packing>
+                                </child>
+                                <child type="label_item">
+                                  <placeholder/>
                                 </child>
                               </object>
+                              <packing>
+                                <property name="y">71</property>
+                              </packing>
                             </child>
                           </object>
                         </child>
-                        <child type="label">
-                          <object class="GtkLabel">
-                            <property name="visible">True</property>
-                            <property name="can_focus">False</property>
-                            <property name="label" translatable="yes">of</property>
-                          </object>
-                        </child>
                       </object>
-                      <packing>
-                        <property name="x">40</property>
-                        <property name="y">155</property>
-                      </packing>
                     </child>
-                    <child>
-                      <object class="GtkRadioButton" id="RadioElemEnd">
-                        <property name="label" translatable="yes">End of string</property>
-                        <property name="height_request">20</property>
-                        <property name="visible">True</property>
-                        <property name="can_focus">True</property>
-                        <property name="receives_default">False</property>
-                        <property name="tooltip_text" translatable="yes">The expression must be at the end of the string.
-In the general case, the expression is searched anywhere in the string.</property>
-                        <property name="active">True</property>
-                        <property name="draw_indicator">True</property>
-                        <property name="group">RadioElementNbOccurrences</property>
-                      </object>
-                      <packing>
-                        <property name="y">425</property>
-                      </packing>
-                    </child>
-                  </object>
-                </child>
-              </object>
-            </child>
-            <child type="label">
-              <object class="GtkLabel">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="label" translatable="yes">Regular Expression building</property>
-              </object>
-            </child>
-          </object>
-          <packing>
-            <property name="x">10</property>
-            <property name="y">10</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkFrame">
-            <property name="width_request">780</property>
-            <property name="height_request">67</property>
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="label_xalign">0</property>
-            <property name="shadow_type">in</property>
-            <child>
-              <object class="GtkAlignment">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="left_padding">12</property>
-                <child>
-                  <object class="GtkFixed">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <child>
-                      <object class="GtkCheckButton" id="CheckCase">
-                        <property name="label" translatable="yes">Case sensitive.</property>
-                        <property name="width_request">120</property>
-                        <property name="height_request">34</property>
-                        <property name="visible">True</property>
-                        <property name="can_focus">True</property>
-                        <property name="receives_default">False</property>
-                        <property name="tooltip_text" translatable="yes">Strictly respect lowercase and uppercase characters.
-Generally, Gramps does not distinguish them.</property>
-                        <property name="draw_indicator">True</property>
-                        <signal name="toggled" handler="on_CheckCase_toggled" swapped="no"/>
-                      </object>
-                      <packing>
-                        <property name="y">4</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkEntry" id="TxtTestString">
-                        <property name="width_request">443</property>
-                        <property name="height_request">34</property>
-                        <property name="visible">True</property>
-                        <property name="can_focus">True</property>
-                        <property name="tooltip_text" translatable="yes">String of characters, to be compared with RegExp for validation.</property>
-                        <signal name="changed" handler="on_TxtTestString_changed" swapped="no"/>
-                      </object>
-                      <packing>
-                        <property name="x">126</property>
-                        <property name="y">4</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkLabel" id="LblTestResult">
-                        <property name="width_request">180</property>
-                        <property name="height_request">34</property>
+                    <child type="label">
+                      <object class="GtkLabel">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="xalign">0</property>
+                        <property name="label" translatable="yes">of</property>
                       </object>
-                      <packing>
-                        <property name="x">577</property>
-                        <property name="y">4</property>
-                      </packing>
                     </child>
                   </object>
+                  <packing>
+                    <property name="x">40</property>
+                    <property name="y">155</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkRadioButton" id="RadioElemEnd">
+                    <property name="label" translatable="yes">End of string</property>
+                    <property name="height_request">20</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="receives_default">False</property>
+                    <property name="tooltip_text" translatable="yes">The expression must be at the end of the string.
+In the general case, the expression is searched anywhere in the string.</property>
+                    <property name="active">True</property>
+                    <property name="draw_indicator">True</property>
+                    <property name="group">RadioElementNbOccurrences</property>
+                  </object>
+                  <packing>
+                    <property name="y">425</property>
+                  </packing>
                 </child>
               </object>
             </child>
-            <child type="label">
-              <object class="GtkLabel">
+          </object>
+        </child>
+        <child type="label">
+          <object class="GtkLabel">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="label" translatable="yes">Regular Expression building</property>
+          </object>
+        </child>
+      </object>
+      <packing>
+        <property name="x">10</property>
+        <property name="y">10</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkFrame">
+        <property name="width_request">780</property>
+        <property name="height_request">67</property>
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="label_xalign">0</property>
+        <property name="shadow_type">in</property>
+        <child>
+          <object class="GtkAlignment">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="left_padding">12</property>
+            <child>
+              <object class="GtkFixed">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="label" translatable="yes">RegExp test zone</property>
+                <child>
+                  <object class="GtkCheckButton" id="CheckCase">
+                    <property name="label" translatable="yes">Case sensitive.</property>
+                    <property name="width_request">120</property>
+                    <property name="height_request">34</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="receives_default">False</property>
+                    <property name="tooltip_text" translatable="yes">Strictly respect lowercase and uppercase characters.
+Generally, Gramps does not distinguish them.</property>
+                    <property name="draw_indicator">True</property>
+                    <signal name="toggled" handler="on_CheckCase_toggled" swapped="no"/>
+                  </object>
+                  <packing>
+                    <property name="y">4</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkEntry" id="TxtTestString">
+                    <property name="width_request">443</property>
+                    <property name="height_request">34</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="tooltip_text" translatable="yes">String of characters, to be compared with RegExp for validation.</property>
+                    <signal name="changed" handler="on_TxtTestString_changed" swapped="no"/>
+                  </object>
+                  <packing>
+                    <property name="x">126</property>
+                    <property name="y">4</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="LblTestResult">
+                    <property name="width_request">180</property>
+                    <property name="height_request">34</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="xalign">0</property>
+                  </object>
+                  <packing>
+                    <property name="x">577</property>
+                    <property name="y">4</property>
+                  </packing>
+                </child>
               </object>
             </child>
           </object>
-          <packing>
-            <property name="x">10</property>
-            <property name="y">529</property>
-          </packing>
+        </child>
+        <child type="label">
+          <object class="GtkLabel">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="label" translatable="yes">RegExp test zone</property>
+          </object>
         </child>
       </object>
+      <packing>
+        <property name="x">10</property>
+        <property name="y">529</property>
+      </packing>
     </child>
   </object>
 </interface>

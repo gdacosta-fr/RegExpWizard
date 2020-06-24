@@ -7,20 +7,20 @@ gi.require_version( 'Gtk', '3.0' )
 
 from gi.repository import Gtk
 
-from InterfaceGtk import Environment
+from InterfaceGtk import GtkInterface
 from Node import Node
 
 
-class WidgetNode(Node,Environment):
+class WidgetNode(Node,GtkInterface):
 
     # Static dictionary of all nodes, indexed by widget
     Dictionary = {}
 
     def __init__(self,nom_widget,enfants_noeuds_widget=None):
-        Environment.__init__(self)
+        GtkInterface.__init__(self)
         Node.__init__(self, nom=nom_widget,children=enfants_noeuds_widget)
 
-        self.Widget = Environment._GtkInterface.get_object(nom_widget)
+        self.Widget = GtkInterface.top.get_object(nom_widget)
         # Add object in the dictionary
         WidgetNode.Dictionary[id(self.Widget)] = self
 
