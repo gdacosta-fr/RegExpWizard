@@ -1,0 +1,15 @@
+# global
+__pycache__
+.idea/
+*~
+*.swp
+/tmp
+
+# local
+/residus
+genmo.sh
+*.desktop
+tmp*
+# Only final translation dictionaries
+*.mo
+!src/locale/*/LC_MESSAGES/*.mo
