@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-17 17:31+0200\n"
-"PO-Revision-Date: 2019-10-14 11:27+0200\n"
+"POT-Creation-Date: 2020-06-22 16:36+0200\n"
+"PO-Revision-Date: 2020-06-17 16:08+0200\n"
 "Last-Translator: Gil <gdc@f5-771g.gdacosta.fr>\n"
 "Language-Team: French\n"
 "Language: fr\n"
@@ -16,150 +16,128 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 1.8.11\n"
+"X-Generator: Poedit 2.2.1\n"
 
-#: RegExpWizard.py:119
+#: RegExpWizardGramplet.gpr.py:49
+msgid "Regular Expressions Wizard"
+msgstr "Assistant de constitution d'expressions rationnelles"
+
+#: RegExpWizardGramplet.gpr.py:50
+msgid ""
+"Regular Expressions Wizard Gramplet assists you in building regular "
+"expressions, used for searching database records"
+msgstr ""
+"L'assistant de constitution d'expressions rationnelles vous aide à "
+"construire des expressions rationnelles, pour chercher des enregistrements "
+"de la base de données"
+
+#: RegExpWizardGramplet.gpr.py:64
+msgid "Regular Expressions"
+msgstr "Expressions rationnelles"
+
+#: RegExpWizardGramplet.py:187
 msgid "Matches"
 msgstr "Correspond"
 
-#: RegExpWizard.py:121
+#: RegExpWizardGramplet.py:189
 msgid "DOES NOT MATCH"
 msgstr "NE CORRESPOND PAS"
 
-#: RegExpWizard.py:159
+#: RegExpWizardGramplet.py:258
 msgid " \""
 msgstr "« "
 
-#: RegExpWizard.py:160 RegularExpressionElement.py:120
-#: RegularExpressionElement.py:123
+#: RegExpWizardGramplet.py:259 RegularExpressionElement.py:116
+#: RegularExpressionElement.py:119
 msgid "\" "
 msgstr " »"
 
-#: RegExpWizard.py:166
+#: RegExpWizardGramplet.py:265
 msgid " or "
 msgstr " ou "
 
-#: RegularExpressionElement.py:65 RegExpWizard.glade:134
+#: RegularExpressionElement.py:61 RegExpWizard.glade:133
 msgid "Start of string"
 msgstr "Début de chaîne"
 
-#: RegularExpressionElement.py:67 RegExpWizard.glade:447
+#: RegularExpressionElement.py:63 RegExpWizard.glade:448
 msgid "End of string"
 msgstr "Fin de chaîne"
 
-#: RegularExpressionElement.py:71 test_RegularExpressionElement.py:15
-#: test_RegularExpressionElement.py:18 test_RegularExpressionElement.py:21
-#: test_RegularExpressionElement.py:37
+#: RegularExpressionElement.py:67
 msgid "INTERNAL ERROR the number of occurrences is missing"
 msgstr "ERREUR INTERNE le nombre d'occurrences n'est pas spécifié"
 
-#: RegularExpressionElement.py:74
+#: RegularExpressionElement.py:70
 msgid "INTERNAL ERROR max < min"
 msgstr "ERREUR INTERNE max < min"
 
-#: RegularExpressionElement.py:85
+#: RegularExpressionElement.py:81
 msgid "occurrences"
 msgstr "occurrences"
 
-#: RegularExpressionElement.py:87
+#: RegularExpressionElement.py:83
 msgid "occurrence"
 msgstr "occurrence"
 
-#: RegularExpressionElement.py:90
+#: RegularExpressionElement.py:86
 msgid " "
 msgstr " "
 
-#: RegularExpressionElement.py:90
+#: RegularExpressionElement.py:86
 msgid " exactly"
 msgstr " exactement"
 
-#: RegularExpressionElement.py:98
+#: RegularExpressionElement.py:94
 msgid "Any number of occurrences"
 msgstr "Nombre quelconque d'occurrences"
 
-#: RegularExpressionElement.py:101 test_RegularExpressionElement.py:40
+#: RegularExpressionElement.py:97
 msgid "At least 1 occurrence"
 msgstr "Au moins 1 occurrence"
 
-#: RegularExpressionElement.py:104
+#: RegularExpressionElement.py:100
 msgid "0 ou 1 occurrence"
 msgstr "0 ou 1 occurrence"
 
-#: RegularExpressionElement.py:107
+#: RegularExpressionElement.py:103
 msgid ""
 "INTERNAL ERROR the number of occurrences {n,m} is not taken into account"
 msgstr "ERREUR INTERNE le nombre d'occurrences {n,m} n'est pas pris en compte"
 
-#: RegularExpressionElement.py:111
+#: RegularExpressionElement.py:107
 msgid " of any character"
 msgstr " d'un caractère quelconque "
 
-#: RegularExpressionElement.py:113
+#: RegularExpressionElement.py:109
 msgid " of one character"
 msgstr " d'un caractère "
 
-#: RegularExpressionElement.py:115
+#: RegularExpressionElement.py:111
 msgid "among \""
 msgstr "parmi « "
 
-#: RegularExpressionElement.py:117
+#: RegularExpressionElement.py:113
 msgid "other than \""
 msgstr "autre que « "
 
-#: RegularExpressionElement.py:119
+#: RegularExpressionElement.py:115
 msgid "INTERNAL ERROR set \""
 msgstr "ERREUR INTERNE ensemble « "
 
-#: RegularExpressionElement.py:123
+#: RegularExpressionElement.py:119
 msgid " of \""
 msgstr " de « "
 
-#: RegularExpressionElement.py:123
+#: RegularExpressionElement.py:119
 msgid "\" or \""
 msgstr " » ou « "
 
-#: test_RegularExpressionElement.py:25
-msgid "1 occurrence exactly of \"ga bu\""
-msgstr "1 occurrence exactement de « ga bu »"
-
-#: test_RegularExpressionElement.py:28
-msgid "0 or 1 occurrence of \"ga bu\""
-msgstr "0 ou 1 occurrence de « ga bu »"
-
-#: test_RegularExpressionElement.py:31
-msgid "Any number of occurrences of \"ga bu\""
-msgstr "Nombre quelconque d'occurrences de « ga bu »"
-
-#: test_RegularExpressionElement.py:34
-msgid "At least 1 occurrence of \"ga bu\""
-msgstr "Au moins 1 occurrence de « ga bu »"
-
-#: test_RegularExpressionElement.py:43
-msgid "1 occurrence exactly of \"ga\" ou \"bu\" ou \"zo\" ou \"meu\""
-msgstr "1 occurrence exactement de « ga » ou « bu » ou « zo » ou « meu »"
-
-#: test_RegularExpressionElement.py:46
-msgid "Any number of occurrences of \"ga\" ou \"bu\" ou \"zo\" ou \"meu\""
+#: RegExpWizard.glade:11
+msgid "↓"
 msgstr ""
-"Nombre quelconque d'occurrences de « ga » ou « bu » ou « zo » ou « meu »"
 
-#: test_RegularExpressionElement.py:49
-msgid "At least 1 occurrence of a character among \"eéèêë\""
-msgstr "Au moins 1 occurrence d'un caractère parmi « eéèêë »"
-
-#: test_RegularExpressionElement.py:52
-msgid "0 ou 1 occurrence of one character other than \"aàáäâ\""
-msgstr "0 ou 1 occurrence d'un caractère autre que « aàáäâ »"
-
-#: RegExpWizard.glade:9
-msgid "Regular Expressions Wizard"
-msgstr "Assistant de constitution d'expressions rationnelles"
-
-#: RegExpWizard.glade:18
-msgid "-->"
-msgstr "-->"
-
-#: RegExpWizard.glade:24
+#: RegExpWizard.glade:17
 msgid ""
 "Accept the element of the current regular expression, and add it after the "
 "regular expression being built."
@@ -167,34 +145,35 @@ msgstr ""
 "Accepter l'élément de l'expression rationnelle courant, et l'ajouter à la "
 "suite de l'expression rationnelle en cours de constitution."
 
-#: RegExpWizard.glade:34
+#: RegExpWizard.glade:27
 msgid "Clear"
 msgstr "Effacer"
 
-#: RegExpWizard.glade:40
+#: RegExpWizard.glade:33
 msgid "Click to make a new regular expression"
 msgstr "Cliquer pour constituer une nouvelle expression rationnelle"
 
-#: RegExpWizard.glade:66
+#: RegExpWizard.glade:59
 msgid "Description, \"in clear text\", of the regular expression"
 msgstr "Description, « en clair », de l'expression rationnelle"
 
-#: RegExpWizard.glade:91
+#: RegExpWizard.glade:84
 msgid "Regular Expression:"
 msgstr "Expression rationnelle :"
 
-#: RegExpWizard.glade:105
+#: RegExpWizard.glade:101
 msgid ""
 "Result corresponding to the created regular expression.\n"
-"A copy and paste in Gramps fields accepting this type of expressions.\n"
-"Do not forget to check the box \"Use regular expressions\""
+"Manually copy and paste this result in Gramps fields accepting this type of "
+"expressions, or, better, click on the \"Paste\" button.\n"
+"Do not forget to check the \"Use regular expressions\" box."
 msgstr ""
 "Résultat correspondant à l'expression rationnelle constituée.\n"
 "A copier et à coller dans les champs de Gramps acceptant ce type "
-"d'expressions.\n"
-"Ne pas oublier de cocher la case « Utiliser les expressions rationnelles »"
+"d'expressions, ou mieux, cliquer sur le bouton « Coller »\n"
+"Ne pas oublier de cocher la case « Utiliser les expressions rationnelles »."
 
-#: RegExpWizard.glade:140
+#: RegExpWizard.glade:139
 msgid ""
 "The following description is found at the beginning of the string.\n"
 "In the general case, the regexp is searched anywhere in the string.\n"
@@ -207,68 +186,67 @@ msgstr ""
 "Par exemple en cherchant \"Début de chaîne\" + chaîne \"Louis\" cela permet "
 "de trouver \"Louis\", \"Louis Marie\",... mais d'ignorer \"Jean-Louis\"."
 
-#: RegExpWizard.glade:149
+#: RegExpWizard.glade:147
 msgid "Number of occurrences"
 msgstr "Nombres d'occurrences"
 
-#: RegExpWizard.glade:165
+#: RegExpWizard.glade:164
 msgid "Zero or one"
 msgstr "Zéro ou une"
 
-#: RegExpWizard.glade:170
+#: RegExpWizard.glade:169
 msgid "The element is optional."
 msgstr "L'élément est facultatif."
 
-#: RegExpWizard.glade:182
+#: RegExpWizard.glade:180
 msgid "One, exactly"
 msgstr "Une, exactement"
 
-#: RegExpWizard.glade:198
+#: RegExpWizard.glade:197
 msgid "At least one"
 msgstr "Au moins une"
 
-#: RegExpWizard.glade:203
+#: RegExpWizard.glade:202
 msgid "The element is present at least once."
 msgstr "L'élément est présent au moins une fois."
 
-#: RegExpWizard.glade:215
+#: RegExpWizard.glade:214
 msgid "Any, including zero"
 msgstr "Quelconque, y compris zéro"
 
-#: RegExpWizard.glade:220
+#: RegExpWizard.glade:219
 msgid "The element is present any number of times, including none."
 msgstr "L'élément est présent un nombre quelconque de fois, y compris aucune."
 
-#: RegExpWizard.glade:250
+#: RegExpWizard.glade:249
 msgid "String of characters"
 msgstr "Chaîne de caractères"
 
-#: RegExpWizard.glade:255
+#: RegExpWizard.glade:254
 msgid "The string of characters entered is searched as is."
 msgstr "La chaîne de caractères saisie est cherchée telle quelle."
 
-#: RegExpWizard.glade:267
+#: RegExpWizard.glade:266
 msgid "Text to search"
 msgstr "Texte à rechercher"
 
-#: RegExpWizard.glade:275
+#: RegExpWizard.glade:274
 msgid "Or"
 msgstr "Ou"
 
-#: RegExpWizard.glade:281
+#: RegExpWizard.glade:280
 msgid "You can specify multiple channel options to search."
 msgstr "Vous pouvez spécifier plusieurs possibilités de chaînes à rechercher."
 
-#: RegExpWizard.glade:291
+#: RegExpWizard.glade:290
 msgid "One character "
 msgstr "Un caractère "
 
-# TODO: revoir
-#: RegExpWizard.glade:306
+#: RegExpWizard.glade:305
 msgid "ordinary"
 msgstr "quelconque"
 
-#: RegExpWizard.glade:312
+#: RegExpWizard.glade:311
 msgid ""
 "Any character: alphabetic, including diacritical characters, numeric, "
 "punctuation, space,..."
@@ -276,11 +254,11 @@ msgstr ""
 "Un caractère quelconque : alphabétique, y compris parmi les caractères "
 "diacritiques, numérique, ponctuation, espace,..."
 
-#: RegExpWizard.glade:323
+#: RegExpWizard.glade:322
 msgid "among"
 msgstr "parmi"
 
-#: RegExpWizard.glade:329
+#: RegExpWizard.glade:328
 msgid ""
 "List the characters, without any spaces nor commas.\n"
 "E.g.: eéêèë"
@@ -288,23 +266,23 @@ msgstr ""
 "Lister les caractères, sans espaces ni virgules.\n"
 "Ex: eéêèë"
 
-#: RegExpWizard.glade:341
+#: RegExpWizard.glade:340
 msgid "except"
 msgstr "sauf"
 
-#: RegExpWizard.glade:347
+#: RegExpWizard.glade:346
 msgid "Any character, EXCEPT those mentioned here"
 msgstr "Un caractère quelconque, SAUF ceux spécifiés ici"
 
-#: RegExpWizard.glade:372
+#: RegExpWizard.glade:371
 msgid "in a set"
 msgstr "dans un ensemble"
 
-#: RegExpWizard.glade:436
+#: RegExpWizard.glade:435
 msgid "of"
 msgstr "de"
 
-#: RegExpWizard.glade:452
+#: RegExpWizard.glade:453
 msgid ""
 "The expression must be at the end of the string.\n"
 "In the general case, the expression is searched anywhere in the string."
@@ -313,17 +291,17 @@ msgstr ""
 "Dans le cas général, l'expression rationnelle est cherchée n'importe où dans "
 "la chaîne."
 
-#: RegExpWizard.glade:470
+#: RegExpWizard.glade:471
 msgid "Regular Expression building"
 msgstr "Constitution de l'expression rationnelle"
 
-#: RegExpWizard.glade:498
+#: RegExpWizard.glade:499
 msgid "Case sensitive."
 msgstr ""
 "Respect de\n"
-"la casse"
+"la casse."
 
-#: RegExpWizard.glade:504
+#: RegExpWizard.glade:505
 msgid ""
 "Strictly respect lowercase and uppercase characters.\n"
 "Generally, Gramps does not distinguish them."
@@ -331,12 +309,51 @@ msgstr ""
 "Respecter strictement les majuscules/minuscules.\n"
 "En général, Gramps ne fait pas la distinction."
 
-#: RegExpWizard.glade:519
+#: RegExpWizard.glade:520
 msgid "String of characters, to be compared with RegExp for validation."
 msgstr ""
 "Chaîne de caractères à confronter à l'expression rationnelle, pour la "
 "valider."
 
-#: RegExpWizard.glade:548
+#: RegExpWizard.glade:549
 msgid "RegExp test zone"
 msgstr "Zone d'essai de l'expression rationnelle"
+
+#: RegExpWizard.glade:560
+msgid "Paste"
+msgstr "Coller"
+
+#: RegExpWizard.glade:566
+msgid ""
+"Paste the regular expression in the \"Filter\" tab, and select this tab."
+msgstr ""
+"Coller l'expression rationnelle dans l'onglet « Filtre », et sélectionner "
+"cet onglet."
+
+#~ msgid "1 occurrence exactly of \"ga bu\""
+#~ msgstr "1 occurrence exactement de « ga bu »"
+
+#~ msgid "0 or 1 occurrence of \"ga bu\""
+#~ msgstr "0 ou 1 occurrence de « ga bu »"
+
+#~ msgid "Any number of occurrences of \"ga bu\""
+#~ msgstr "Nombre quelconque d'occurrences de « ga bu »"
+
+#~ msgid "At least 1 occurrence of \"ga bu\""
+#~ msgstr "Au moins 1 occurrence de « ga bu »"
+
+#~ msgid "1 occurrence exactly of \"ga\" ou \"bu\" ou \"zo\" ou \"meu\""
+#~ msgstr "1 occurrence exactement de « ga » ou « bu » ou « zo » ou « meu »"
+
+#~ msgid "Any number of occurrences of \"ga\" ou \"bu\" ou \"zo\" ou \"meu\""
+#~ msgstr ""
+#~ "Nombre quelconque d'occurrences de « ga » ou « bu » ou « zo » ou « meu »"
+
+#~ msgid "At least 1 occurrence of a character among \"eéèêë\""
+#~ msgstr "Au moins 1 occurrence d'un caractère parmi « eéèêë »"
+
+#~ msgid "0 ou 1 occurrence of one character other than \"aàáäâ\""
+#~ msgstr "0 ou 1 occurrence d'un caractère autre que « aàáäâ »"
+
+#~ msgid "-->"
+#~ msgstr "-->"

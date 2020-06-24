@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # coding: utf-8
 
-from GrampsOrNotGramps import _
+from i18n import _
 
 #
 # Expressions rationelles = Regular Expressions = RegExp = Regex = RE

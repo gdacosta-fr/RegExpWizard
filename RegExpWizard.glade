@@ -8,7 +8,7 @@
     <signal name="destroy" handler="on_main_destroy" swapped="no"/>
     <child>
       <object class="GtkButton" id="BtnAdd">
-        <property name="label" translatable="yes">--&gt;</property>
+        <property name="label" translatable="yes">↓</property>
         <property name="width_request">80</property>
         <property name="height_request">35</property>
         <property name="visible">True</property>
@@ -18,8 +18,8 @@
         <signal name="clicked" handler="on_BtnAdd_clicked" swapped="no"/>
       </object>
       <packing>
-        <property name="x">384</property>
-        <property name="y">10</property>
+        <property name="x">14</property>
+        <property name="y">538</property>
       </packing>
     </child>
     <child>
@@ -34,14 +34,14 @@
         <signal name="clicked" handler="on_BtlClearAll_clicked" swapped="no"/>
       </object>
       <packing>
-        <property name="x">384</property>
-        <property name="y">60</property>
+        <property name="x">147</property>
+        <property name="y">538</property>
       </packing>
     </child>
     <child>
       <object class="GtkFrame">
-        <property name="width_request">318</property>
-        <property name="height_request">469</property>
+        <property name="width_request">364</property>
+        <property name="height_request">175</property>
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="label_xalign">0</property>
@@ -71,44 +71,50 @@
         </child>
       </object>
       <packing>
-        <property name="x">472</property>
-        <property name="y">10</property>
+        <property name="x">10</property>
+        <property name="y">617</property>
       </packing>
     </child>
     <child>
       <object class="GtkLabel">
-        <property name="width_request">185</property>
+        <property name="width_request">135</property>
         <property name="height_request">20</property>
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="label" translatable="yes">Regular Expression:</property>
         <property name="xalign">1</property>
+        <attributes>
+          <attribute name="foreground" value="#34346565a4a4"/>
+        </attributes>
       </object>
       <packing>
-        <property name="x">10</property>
-        <property name="y">494</property>
+        <property name="x">16</property>
+        <property name="y">586</property>
       </packing>
     </child>
     <child>
       <object class="GtkEntry" id="TxtRegExp">
-        <property name="width_request">591</property>
+        <property name="width_request">222</property>
         <property name="height_request">20</property>
         <property name="visible">True</property>
         <property name="can_focus">True</property>
         <property name="tooltip_text" translatable="yes">Result corresponding to the created regular expression.
-A copy and paste in Gramps fields accepting this type of expressions.
-Do not forget to check the box "Use regular expressions"</property>
+Manually copy and paste this result in Gramps fields accepting this type of expressions, or, better, click on the "Paste" button.
+Do not forget to check the "Use regular expressions" box.</property>
+        <property name="halign">start</property>
+        <property name="editable">False</property>
+        <property name="caps_lock_warning">False</property>
         <signal name="changed" handler="on_TxtRegExp_changed" swapped="no"/>
       </object>
       <packing>
-        <property name="x">200</property>
-        <property name="y">487</property>
+        <property name="x">153</property>
+        <property name="y">579</property>
       </packing>
     </child>
     <child>
       <object class="GtkFrame" id="FrameReBuilding">
         <property name="width_request">364</property>
-        <property name="height_request">469</property>
+        <property name="height_request">521</property>
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="label_xalign">0</property>
@@ -134,7 +140,6 @@ Do not forget to check the box "Use regular expressions"</property>
 In the general case, the regexp is searched anywhere in the string.
 By example by searching for "Start of string" + string "Louis" this allows to find "Louis", "Louis Marie",... but to ignore "Jean-Louis".</property>
                     <property name="draw_indicator">True</property>
-                    <property name="group">RadioElementNbOccurrences</property>
                   </object>
                 </child>
                 <child>
@@ -147,6 +152,7 @@ By example by searching for "Start of string" + string "Louis" this allows to fi
                     <property name="receives_default">False</property>
                     <property name="active">True</property>
                     <property name="draw_indicator">True</property>
+                    <property name="group">RadioElemBeginning</property>
                     <signal name="toggled" handler="RadioButtonChanged" swapped="no"/>
                   </object>
                   <packing>
@@ -163,7 +169,6 @@ By example by searching for "Start of string" + string "Louis" this allows to fi
                     <property name="tooltip_text" translatable="yes">The element is optional.</property>
                     <property name="active">True</property>
                     <property name="draw_indicator">True</property>
-                    <property name="group">RadioNbOccurrences1</property>
                   </object>
                   <packing>
                     <property name="x">40</property>
@@ -180,6 +185,7 @@ By example by searching for "Start of string" + string "Louis" this allows to fi
                     <property name="receives_default">False</property>
                     <property name="active">True</property>
                     <property name="draw_indicator">True</property>
+                    <property name="group">RadioNbOccurrences0or1</property>
                   </object>
                   <packing>
                     <property name="x">40</property>
@@ -196,7 +202,7 @@ By example by searching for "Start of string" + string "Louis" this allows to fi
                     <property name="tooltip_text" translatable="yes">The element is present at least once.</property>
                     <property name="active">True</property>
                     <property name="draw_indicator">True</property>
-                    <property name="group">RadioNbOccurrences1</property>
+                    <property name="group">RadioNbOccurrences0or1</property>
                   </object>
                   <packing>
                     <property name="x">40</property>
@@ -213,7 +219,7 @@ By example by searching for "Start of string" + string "Louis" this allows to fi
                     <property name="tooltip_text" translatable="yes">The element is present any number of times, including none.</property>
                     <property name="active">True</property>
                     <property name="draw_indicator">True</property>
-                    <property name="group">RadioNbOccurrences1</property>
+                    <property name="group">RadioNbOccurrences0or1</property>
                     <signal name="toggled" handler="RadioButtonChanged" swapped="no"/>
                   </object>
                   <packing>
@@ -224,7 +230,7 @@ By example by searching for "Start of string" + string "Louis" this allows to fi
                 <child>
                   <object class="GtkFrame" id="FrameOccurencesOf">
                     <property name="width_request">300</property>
-                    <property name="height_request">270</property>
+                    <property name="height_request">320</property>
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="label_xalign">0</property>
@@ -291,7 +297,7 @@ By example by searching for "Start of string" + string "Louis" this allows to fi
                                 <signal name="toggled" handler="RadioButtonChanged" swapped="no"/>
                               </object>
                               <packing>
-                                <property name="y">125</property>
+                                <property name="y">173</property>
                               </packing>
                             </child>
                             <child>
@@ -308,7 +314,7 @@ By example by searching for "Start of string" + string "Louis" this allows to fi
                               </object>
                               <packing>
                                 <property name="x">40</property>
-                                <property name="y">150</property>
+                                <property name="y">198</property>
                               </packing>
                             </child>
                             <child>
@@ -326,7 +332,7 @@ E.g.: eéêèë</property>
                               </object>
                               <packing>
                                 <property name="x">80</property>
-                                <property name="y">200</property>
+                                <property name="y">248</property>
                               </packing>
                             </child>
                             <child>
@@ -343,7 +349,7 @@ E.g.: eéêèë</property>
                               </object>
                               <packing>
                                 <property name="x">80</property>
-                                <property name="y">225</property>
+                                <property name="y">273</property>
                               </packing>
                             </child>
                             <child>
@@ -357,7 +363,7 @@ E.g.: eéêèë</property>
                               </object>
                               <packing>
                                 <property name="x">190</property>
-                                <property name="y">200</property>
+                                <property name="y">248</property>
                               </packing>
                             </child>
                             <child>
@@ -374,13 +380,13 @@ E.g.: eéêèë</property>
                               </object>
                               <packing>
                                 <property name="x">40</property>
-                                <property name="y">175</property>
+                                <property name="y">223</property>
                               </packing>
                             </child>
                             <child>
                               <object class="GtkFrame">
                                 <property name="width_request">271</property>
-                                <property name="height_request">47</property>
+                                <property name="height_request">103</property>
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
                                 <property name="label_xalign">0</property>
@@ -415,7 +421,7 @@ E.g.: eéêèë</property>
                                 </child>
                               </object>
                               <packing>
-                                <property name="y">71</property>
+                                <property name="y">66</property>
                               </packing>
                             </child>
                           </object>
@@ -427,12 +433,14 @@ E.g.: eéêèë</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="label" translatable="yes">of</property>
+                        <property name="justify">right</property>
+                        <property name="width_chars">3</property>
                       </object>
                     </child>
                   </object>
                   <packing>
                     <property name="x">40</property>
-                    <property name="y">155</property>
+                    <property name="y">149</property>
                   </packing>
                 </child>
                 <child>
@@ -446,10 +454,10 @@ E.g.: eéêèë</property>
 In the general case, the expression is searched anywhere in the string.</property>
                     <property name="active">True</property>
                     <property name="draw_indicator">True</property>
-                    <property name="group">RadioElementNbOccurrences</property>
+                    <property name="group">RadioElemBeginning</property>
                   </object>
                   <packing>
-                    <property name="y">425</property>
+                    <property name="y">473</property>
                   </packing>
                 </child>
               </object>
@@ -471,8 +479,8 @@ In the general case, the expression is searched anywhere in the string.</propert
     </child>
     <child>
       <object class="GtkFrame">
-        <property name="width_request">780</property>
-        <property name="height_request">67</property>
+        <property name="width_request">364</property>
+        <property name="height_request">107</property>
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="label_xalign">0</property>
@@ -505,7 +513,7 @@ Generally, Gramps does not distinguish them.</property>
                 </child>
                 <child>
                   <object class="GtkEntry" id="TxtTestString">
-                    <property name="width_request">443</property>
+                    <property name="width_request">190</property>
                     <property name="height_request">34</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
@@ -519,15 +527,15 @@ Generally, Gramps does not distinguish them.</property>
                 </child>
                 <child>
                   <object class="GtkLabel" id="LblTestResult">
-                    <property name="width_request">180</property>
+                    <property name="width_request">312</property>
                     <property name="height_request">34</property>
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="xalign">0</property>
                   </object>
                   <packing>
-                    <property name="x">577</property>
-                    <property name="y">4</property>
+                    <property name="x">3</property>
+                    <property name="y">42</property>
                   </packing>
                 </child>
               </object>
@@ -544,7 +552,23 @@ Generally, Gramps does not distinguish them.</property>
       </object>
       <packing>
         <property name="x">10</property>
-        <property name="y">529</property>
+        <property name="y">803</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkButton" id="BtnPaste">
+        <property name="label" translatable="yes">Paste</property>
+        <property name="width_request">80</property>
+        <property name="height_request">35</property>
+        <property name="visible">True</property>
+        <property name="can_focus">True</property>
+        <property name="receives_default">True</property>
+        <property name="tooltip_text" translatable="yes">Paste the regular expression in the "Filter" tab, and select this tab.</property>
+        <signal name="clicked" handler="on_BtnPaste_clicked" swapped="no"/>
+      </object>
+      <packing>
+        <property name="x">285</property>
+        <property name="y">538</property>
       </packing>
     </child>
   </object>

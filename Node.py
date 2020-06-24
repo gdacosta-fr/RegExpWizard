@@ -5,7 +5,7 @@
 
 class Node:
     """
-    Inspired from <https://stackoverflow.com/a/28015122>
+    Inspired by <https://stackoverflow.com/a/28015122>
     """
     def __init__(self, nom=None, children=None):
         self.Name = nom

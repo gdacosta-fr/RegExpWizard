@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 # coding: utf-8
 
-import const
 import locale
 import os
 import ctypes
@@ -10,6 +9,9 @@ gi.require_version( 'Gtk', '3.0' )
 
 from gi.repository import Gtk
 
+import Const
+
+from i18n import win
 
 
 class GtkInterface:
@@ -31,7 +33,7 @@ class GtkInterface:
         # This is needed to make gtk.Builder work by specifying the
         # translations directory in a separate 'domain'
         try:
-            localedomain = const.GETTEXT_DOMAIN
+            localedomain = Const.GETTEXT_DOMAIN
             localepath = GtkInterface.package_path + "locale"
             if hasattr(locale, 'bindtextdomain'):
                 libintl = locale
@@ -47,7 +49,7 @@ class GtkInterface:
             libintl.textdomain(localedomain)
             libintl.bind_textdomain_codeset(localedomain, "UTF-8")
             # and finally, tell Gtk Builder to use that domain
-            self.top.set_translation_domain(const.GETTEXT_DOMAIN)
+            self.top.set_translation_domain(Const.GETTEXT_DOMAIN)
         except (OSError, AttributeError):
             # Will leave it in English
             print("Localization of RegExpWizard failed!")

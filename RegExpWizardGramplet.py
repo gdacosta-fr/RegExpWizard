@@ -1,19 +1,64 @@
-#!/usr/bin/env python3
-# coding: utf-8
+# -*- coding: utf-8 -*-
+#
+# Gramps - a GTK+/GNOME based genealogy program
+#
+# Copyright (C) 2018      Paul Culley
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+#
+#
+# Gramplet Skeleton Gramplet.
+#
+# pylint: disable=attribute-defined-outside-init
 
+#------------------------------------------------------------------------
+#
+# Python modules
+#
+#------------------------------------------------------------------------
+import os
+import ctypes
+import locale
 
-
+#------------------------------------------------------------------------
+#
+# GTK modules
+#
+#------------------------------------------------------------------------
 import gi
 gi.require_version( 'Gtk', '3.0' )
-
 from gi.repository import Gtk
+
 import re
+
+#------------------------------------------------------------------------
+#
+# Gramps modules
+#
+#------------------------------------------------------------------------
+from gramps.gen.plug import Gramplet
+
 from InterfaceGtk import GtkInterface
 from WidgetNode import WidgetNode
 from RegExpStack import RegExpStack
 from RegularExpressionElement import RegularExpressionElement
-import version
-from GrampsOrNotGramps import _, RunningUnderGramps
+
+from i18n import _
+
+from Configuration import Configuration
+
 
 
 #
@@ -22,11 +67,16 @@ from GrampsOrNotGramps import _, RunningUnderGramps
 # The goal is not to use the full range of possibilities for Perl RE, but a small subset that should
 # be enough for Gramps users.
 #
+# Initialization is done by overridden init() method, vs __init__().
 # The reference is the French translation.
-#
 
-class RegExpWizard(GtkInterface):
-    def __init__(self):
+class RegExpWizardGramplet(Gramplet,GtkInterface):
+
+    # Overrides Gramplet.init()
+    def init(self):
+        """
+        Initialise the gramplet.
+        """
         GtkInterface.__init__(self)
 
         GtkInterface.top.add_from_file(self.package_path + "RegExpWizard.glade")
@@ -39,10 +89,6 @@ class RegExpWizard(GtkInterface):
         window = GtkInterface.top.get_object('main')
         window.connect( 'destroy', Gtk.main_quit )
 
-        # Version identification
-        # TODO on récupère la version de Gramps, vs la version du greffon
-#GdC#        window.set_title(window.get_title() + " (" + version.VERSION + ")")
-
         window.show_all()
 
         self.RegExpStack = RegExpStack(widget=GtkInterface.top.get_object("TxtRegExpClearText"))
@@ -54,6 +100,33 @@ class RegExpWizard(GtkInterface):
         self.CheckCase = GtkInterface.top.get_object("CheckCase")
         self.LblTestResult = GtkInterface.top.get_object("LblTestResult")
 
+        # Outside of the main widgets tree
+        self.BtnPaste = WidgetNode("BtnPaste")
+
+        root = self.__create_gui()
+        self.gui.get_container_widget().remove(self.gui.textview)
+        self.gui.get_container_widget().add(root)
+        root.show_all()
+
+    def __create_gui(self):
+        """
+        Create and display the GUI components of the gramplet.
+        """
+        # the results screen items
+        self.top.connect_signals({
+            "on_main_destroy"   : self.on_main_destroy,
+            "on_main_close" : self.on_main_close,
+            "RadioButtonChanged": self.RadioButtonChanged,
+            "on_BtnOr_clicked": self.on_BtnOr_clicked,
+            "on_BtnAdd_clicked": self.on_BtnAdd_clicked,
+            "on_BtlClearAll_clicked": self.on_BtlClearAll_clicked,
+            "on_TxtTestString_changed": self.on_TxtTestString_changed,
+            "on_CheckCase_toggled": self.on_CheckCase_toggled,
+            "on_TxtRegExp_changed": self.on_TxtRegExp_changed
+        })
+        # main screen items
+        self.mainwin = self.top.get_object("main")
+        return self.mainwin
 
     def __BuildWidgetsTree(self):
         # Next step: build this tree from the Glade file...
@@ -125,6 +198,42 @@ class RegExpWizard(GtkInterface):
             if not rb.get_active():
                 rb.set_sensitive(not lock)
 
+    #
+    # Inspired by GrampletBar.all_gramplets()
+    #
+    def enumerate_siblings(self):
+        """
+        Enumerates all active TabGramplet objects, including the one associated to this Gramplet, in the current view.
+        """
+        tabgramplet = self.gui
+        grampletbar = tabgramplet.pane
+        if grampletbar.empty:
+            return grampletbar.detached_gramplets
+        else:
+            return [gramplet for gramplet in grampletbar.get_children() +
+                    grampletbar.detached_gramplets]
+
+    def get_associated_filter_gramplet(self):
+        """
+        :return: The 1st Filter gramplet (class: TabGramplet) found in the current view (normally, at most 1)
+        """
+        result = None
+        siblings = self.enumerate_siblings()
+        for sibling in siblings:
+            if  sibling.gname in Configuration.get_associated_gramplets_name():
+                result = sibling
+                # Stop on 1st occurrence
+                break
+
+        return result
+
+    # ======================================================
+    # gramplet event handlers
+    # ======================================================
+
+    def on_main_close(self, widget):
+        Gtk.main_quit()
+
     def RadioButtonChanged(self,widget):
         # Common to all RE building radio buttons
         try:
@@ -135,11 +244,6 @@ class RegExpWizard(GtkInterface):
         except:
             # No dictionary. Just ignore.
             pass
-
-
-
-    def on_main_close(self, widget):
-        Gtk.main_quit()
 
     def on_BtnOr_clicked(self, widget):
         s = self.TxtElementaryString.get_text()
@@ -168,7 +272,6 @@ class RegExpWizard(GtkInterface):
         re = None   # current regular expression element
         min = -1
         max = -1
-
 
         if self.RadioElemBeginning.get_active():
             re = RegularExpressionElement(preamble="^")
@@ -241,8 +344,36 @@ class RegExpWizard(GtkInterface):
         self.__ClearResults()
         self.FrameReBuilding.Validate(True)
 
+    def on_BtnPaste_clicked(self,  widget):
+        """
+        Paste regular expression, in "Filter" Gramplet
+        """
+        try:
+            associated_tabgramplet = self.get_associated_filter_gramplet()
+            if associated_tabgramplet:
+                xxxfilter = associated_tabgramplet.pui # Plugin User Interface
+                xxxsidebarfilter = xxxfilter.filter
+                # Check the "Use regular expressions" box
+                chkbtnregex = xxxsidebarfilter.filter_regex
+                chkbtnregex.set_active(True)
+                # Write the regexp in associated filter tab
+                re_field = Configuration.get_re_field_from(associated_tabgramplet.gname)
+                gtkentryre = getattr(xxxsidebarfilter, re_field, None)
+                if gtkentryre:
+                    gtkentryre.set_text(self.TxtRegExp.get_text())
+
+                # Activate associated filter tab
+                tabgramplet = self.gui
+                grampletbar = tabgramplet.pane
+                page_number = grampletbar.page_num(associated_tabgramplet)
+                if page_number >= 0:
+                    # Found the filter Gramplet page. Select it.
+                    grampletbar.set_current_page(page_number)
+        except:
+            pass
+
     # Signal not found in documentation, but known by Glade
-    def on_TxtTestString_changed(self,  widget):
+    def on_TxtTestString_changed(self, widget):
         self.__EvaluateTestRegExp()
 
     def on_CheckCase_toggled(self, widget):
@@ -251,12 +382,7 @@ class RegExpWizard(GtkInterface):
     def on_TxtRegExp_changed(self, widget):
         self.__EvaluateTestRegExp()
 
-def main():
-    rew = RegExpWizard()    # useless variable, but make debug easy
-    Gtk.main()
-
-if __name__ == "__main__":
-    main()
-
+    def on_main_destroy(self, dummy):
+        pass
 
 # vim: tabstop=4:shiftwidth=4:expandtab

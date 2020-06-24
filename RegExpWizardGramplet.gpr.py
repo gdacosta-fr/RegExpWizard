@@ -1,7 +1,7 @@
 #
 # Gramps - a GTK+/GNOME based genealogy program
 #
-# Copyright (C) 2019      G.Da Costa
+# Copyright (C) 2020      G.Da Costa
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -23,9 +23,26 @@ Regular Expressions Wizard Gramplet.
 """
 
 
-import version
+
+#
+# Version identifiers, inspired by gramps/version.py
+#
+
+### The following values may be used/modified by an external program (Git,...) ######
+GRAMPLET_VERSION_TUPLE = (2, 51, 1)
+GRAMPLET_VERSION_QUALIFIER = ""
+GRAMPS_TARGET_VERSION = "5.1"
+# plus
+GRAMPLET_NAVTYPES = [ "Person", "Family", "Event", "Place", "Source", "Citation", "Repository", "Media", "Note" ]
+############################################################################# End ###
+
+GRAMPLET_VERSION = '.'.join(map(str,GRAMPLET_VERSION_TUPLE)) + GRAMPLET_VERSION_QUALIFIER
 
 
+
+#
+# Reference: gramps/gen/plug/_pluginreg.py
+#
 register(
     GRAMPLET,
     id = "RegExpWizard",
@@ -33,18 +50,18 @@ register(
     description = _("Regular Expressions Wizard Gramplet assists you in building regular expressions, used for "
                         "searching database records"),
     authors = ["G.Da Costa"],
-    authors_email = ["regexp-wizard@gdacosta.fr"],  # TODO: Créer cette adresse
+    authors_email = ["regexp-wizard@gdacosta.fr"],
     status = STABLE,
-    version = version.VERSION,
-    gramps_target_version = '5.1',
+    version = GRAMPLET_VERSION,
+    gramps_target_version = GRAMPS_TARGET_VERSION,
     fname = "RegExpWizardGramplet.py",
     gramplet = 'RegExpWizardGramplet',  # Class name
-    navtypes=["Person", "Place"],       # TODO: compléter
+    navtypes = GRAMPLET_NAVTYPES,
     height = 375,
     detached_width = 510,
     detached_height = 480,
     expand = True,
-    gramplet_title = _("Regular Expressions Wizard"),
+    gramplet_title = _("Regular Expressions"),
     help_url= None, # TODO: URL @ gdacosta.fr
     include_in_listing = True,
     )

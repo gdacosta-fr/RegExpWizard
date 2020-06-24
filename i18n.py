@@ -1,5 +1,3 @@
-
-
 """
 This module provides some resources, either from the Gramps environment if
 available, or from some defaults and fallbacks.
@@ -21,13 +19,7 @@ if "gramps" in sys.modules:
     # Gramps modules
     #
     #------------------------------------------------------------------------
-####    from gramps.gui.dialog import ErrorDialog, WarningDialog
-    ####    from gramps.gen.plug import Gramplet
-    ####    from gramps.gen.lib import StyledText, StyledTextTag, StyledTextTagType
-    ####    from gramps.gen.config import config
     from gramps.gen.constfunc import win
-    ####    from gramps.gui.display import display_url
-    ####    from gramps.gen.display.place import displayer as _pd
 
 
     #------------------------------------------------------------------------
@@ -41,6 +33,7 @@ if "gramps" in sys.modules:
     except ValueError:
         _trans = glocale.translation
     _ = _trans.gettext
+
 else:
     #
     # Fallbacks

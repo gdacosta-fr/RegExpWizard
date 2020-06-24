@@ -32,7 +32,7 @@ class RegExpStack:
 
     def GetRegExp(self):
         """
-        Return concatened regular expressions
+        Return concatenated regular expressions
         """
         re=[]
         for element in self._Stack:
